@@ -1,7 +1,7 @@
-# DanteHaxor.github.io
+# amit9675.github.io
 My Portfolio
 
-![portfolio](https://i.imgur.com/CLwASUe.jpeg)
+![portfolio](https://i.ibb.co/rySPYtb/about.png)
 
 I made my Portfolio using HTML , CSS and JavaScript. 
-You will get to know me and my work  better by looking at my Portfolio.
+It is my id card
