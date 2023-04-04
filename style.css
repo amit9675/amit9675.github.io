@@ -199,7 +199,7 @@ nav.sticky .menu-btn{
   background-attachment: fixed;
   font-family: 'Ubuntu', sans-serif;
   background-color: rgb(108 166 205);
-  border: 1px solid red;
+  /* border: 1px solid red; */
 }
 .homee .home-content{
   width: 60%;
