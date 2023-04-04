@@ -35,7 +35,7 @@ nav{
   box-shadow: hsla(212, 97%, 43%, 0.3) 0px 0px 0px 3px;
 }
 nav.sticky{
-  background: hwb(224 55% 9%);
+  background: hwb(224 34% 9%);
   /* background: red; */
   padding: 13px 0;
   box-shadow: none;
@@ -165,7 +165,7 @@ nav.sticky .menu-btn{
 }
 @keyframes float {
 	0% {
-		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+		box-shadow: 0 5px 15px 0px rgba(70, 116, 207, 0.6);
 		transform: translatey(0px);
 	}
 	50% {
@@ -198,8 +198,8 @@ nav.sticky .menu-btn{
   background-position: center;
   background-attachment: fixed;
   font-family: 'Ubuntu', sans-serif;
-  background-color: rgb(66,66,66);
-  /* border: 1px solid red; */
+  background-color: rgb(108 166 205);
+  border: 1px solid red;
 }
 .homee .home-content{
   width: 60%;
@@ -462,6 +462,17 @@ section .button button:hover{
 #btns:hover{
   background-color: white;
   color: black;
+}
+#codebase{
+  width: 300px;
+  height:max-content;
+  border-radius: 5px;
+  background-color: rgb(100, 100, 255);
+  color: white;
+  margin-left: 20px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
 }
 .services .boxes .box{
   margin: 20px 0;
