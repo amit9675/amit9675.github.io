@@ -344,7 +344,7 @@ section .button button:hover{
 }
 .skills-details .boxes{
  display: grid;
- grid-template-columns: repeat(6, 1fr);
+ grid-template-columns: repeat(6,1fr);
  gap: 15px;
  margin: auto;
 }
@@ -749,7 +749,66 @@ footer .text span a:hover{
 
 
 }
-
+.project-boxes{
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+gap: 30px;
+}
+ /* .box:hover{
+  background: #202f59;
+  color: #fff;
+  box-shadow: none;
+} */
+.project-card{
+  padding:20px;
+  border-radius: 10px;
+}
+.services .projetct-boxes .box{
+  margin: 20px 0;
+  width: calc(100% / 3 - 20px);
+  height: 500px;
+  text-align: center;
+  border-radius: 12px;
+  background-color: white;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  padding: 30px 10px;
+  cursor: default;
+  transition: all 0.4s ease;
+}
+.services .project-boxes .box:hover{
+  background: #202f59;
+  color: #fff;
+  box-shadow: none;
+}
+.services .project-boxes .box .icon{
+  border-radius: 10px;
+  width: 100%;
+  text-align: center;
+  line-height: 50px;
+  font-size: 18px;
+  color: #fff;
+  margin: 0 auto 10px auto;
+  transition: all 0.4s ease;
+}
+.services .project-boxes .box .icon .imgs{
+  border-radius: 10px;
+}
+/* .services .project-boxes .box .icon .imgs:hover{
+  border-radius: 10px;
+} */
+.project-boxes .box:hover .icon{
+  background-color: #fff;
+  color: black
+}
+.services .project-boxes .box:hover .topic,
+.services .project-boxes .box:hover p{
+  color: #0E2431;
+  transition: all 0.4s ease;
+}
+.services .project-boxes .box:hover .topic,
+.services .project-boxes .box:hover p{
+  color: #fff;
+}
 @media (max-width: 500px){
   .homee .text-two{
     font-size: 55px;
