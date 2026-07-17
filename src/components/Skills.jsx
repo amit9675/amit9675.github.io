@@ -1,52 +1,57 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaReact, FaNodeJs, FaDatabase } from 'react-icons/fa';
-import { SiMongodb, SiApachespark } from 'react-icons/si';
-import { HiChatBubbleLeftRight } from 'react-icons/hi2';
+import { FaReact, FaNodeJs, FaCloud, FaPython } from 'react-icons/fa';
+import { SiGithubactions, SiApachespark } from 'react-icons/si';
 import './Skills.css';
 
 const skillsData = [
+  {
+    icon: FaNodeJs,
+    title: 'Node.js & APIs',
+    color: '#339933',
+    description:
+      'Building scalable Node.js and Express services, REST APIs, authentication, middleware and production-ready backend architectures.',
+    focus: ['Node.js', 'Express', 'REST APIs'],
+  },
+  {
+    icon: FaReact,
+    title: 'React & Frontend',
+    color: '#61DAFB',
+    description:
+      'Creating responsive, accessible React applications with reusable components, hooks, context and thoughtful interaction design.',
+    focus: ['React', 'Vite', 'Responsive UI'],
+  },
+  {
+    icon: SiGithubactions,
+    title: 'CI/CD & Automation',
+    color: '#8b5cf6',
+    description:
+      'Automating build, test and deployment workflows with GitHub Actions and repeatable delivery practices for reliable releases.',
+    focus: ['GitHub Actions', 'Deployment', 'Automation'],
+  },
   {
     icon: SiApachespark,
     title: 'Data Engineering',
     color: '#E25A1C',
     description:
-      'Designing robust ETL/ELT pipelines with Python, SQL and PySpark. Experienced with Databricks, Snowflake, data lineage, normalization and warehouse modeling on AWS and Azure.',
+      'Designing robust ETL/ELT pipelines with SQL and PySpark, plus lineage, normalization, warehouse modeling, Databricks and Snowflake.',
+    focus: ['PySpark', 'Databricks', 'Snowflake'],
   },
   {
-    icon: FaReact,
-    title: 'React Js',
-    color: '#61DAFB',
+    icon: FaCloud,
+    title: 'Cloud Platforms',
+    color: '#22d3ee',
     description:
-      'Experienced in building dynamic, component-based user interfaces using React.js. Skilled in state management, hooks, context API, and creating responsive, high-performance single-page applications with clean, reusable code architecture.',
+      'Working across AWS and Microsoft Azure to deliver cloud-hosted applications, data workflows and scalable platform foundations.',
+    focus: ['AWS', 'Azure', 'Cloud Data'],
   },
   {
-    icon: FaNodeJs,
-    title: 'Node.js Backend',
-    color: '#339933',
+    icon: FaPython,
+    title: 'Python & Web Scraping',
+    color: '#3776AB',
     description:
-      'Proficient in developing robust server-side applications with Node.js and Express.js. Experienced in building RESTful APIs, implementing authentication, handling middleware, and ensuring scalable backend architectures for production-ready applications.',
-  },
-  {
-    icon: SiMongodb,
-    title: 'MongoDB',
-    color: '#47A248',
-    description:
-      'Skilled in designing and managing NoSQL databases using MongoDB. Experienced in data modeling, aggregation pipelines, indexing strategies, and integrating MongoDB with Node.js applications using Mongoose for efficient data operations.',
-  },
-  {
-    icon: FaDatabase,
-    title: 'DSA',
-    color: 'var(--accent-cyan)',
-    description:
-      'Strong foundation in Data Structures and Algorithms. Solved 600+ problems across platforms, with expertise in arrays, trees, graphs, dynamic programming, and optimization techniques essential for writing efficient and scalable code.',
-  },
-  {
-    icon: HiChatBubbleLeftRight,
-    title: 'Communication',
-    color: 'var(--accent-violet)',
-    description:
-      'Effective communicator with strong interpersonal skills. Experienced in collaborating with cross-functional teams, presenting technical concepts to diverse audiences, and contributing to productive team dynamics through active listening and clear articulation.',
+      'Using Python for data processing, automation and responsible web scraping to transform unstructured sources into useful datasets.',
+    focus: ['Python', 'Automation', 'Web Scraping'],
   },
 ];
 
@@ -93,8 +98,14 @@ const Skills = () => {
               <div className="skill-icon-wrapper">
                 <Icon className="skill-icon" style={{ color: skill.color }} />
               </div>
+              <span className="skill-index">0{index + 1}</span>
               <h3 className="skill-title">{skill.title}</h3>
               <p className="skill-description">{skill.description}</p>
+              <div className="skill-focus">
+                {skill.focus.map((item) => (
+                  <span key={item}>{item}</span>
+                ))}
+              </div>
             </motion.div>
           );
         })}

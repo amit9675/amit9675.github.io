@@ -21,6 +21,8 @@
   padding: 34px 28px;
   border-radius: var(--radius-md);
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .skill-card:hover {
@@ -71,6 +73,16 @@
   font-size: 1.9rem;
 }
 
+.skill-index {
+  position: absolute;
+  top: 24px;
+  right: 26px;
+  color: var(--text-tertiary);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+}
+
 /* ---------- Text ---------- */
 
 .skill-title {
@@ -82,9 +94,27 @@
 }
 
 .skill-description {
+  flex: 1;
   font-size: 0.92rem;
   line-height: 1.75;
   color: var(--text-secondary);
+}
+
+.skill-focus {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 20px;
+}
+
+.skill-focus span {
+  padding: 5px 10px;
+  border: 1px solid color-mix(in srgb, var(--skill-color) 28%, transparent);
+  border-radius: 999px;
+  color: color-mix(in srgb, var(--skill-color) 76%, var(--text-primary));
+  background: color-mix(in srgb, var(--skill-color) 8%, transparent);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
 }
 
 /* ========================================

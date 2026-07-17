@@ -6,7 +6,6 @@
   margin: 0 auto;
 }
 
-/* Stats Grid */
 .github-stats-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -15,33 +14,153 @@
   margin: 0 auto;
 }
 
-/* LeetCode card spans full width on its own row */
-.github-stats-grid > :nth-child(3) {
-  grid-column: 1 / -1;
-  max-width: 640px;
-  justify-self: center;
-  width: 100%;
-}
-
-.github-card {
+.activity-card {
   border-radius: var(--radius-md);
-  padding: 22px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  padding: 28px;
+  min-height: 260px;
   overflow: hidden;
+  color: var(--text-primary);
 }
 
-.github-card:hover {
+.activity-card:hover {
   border-color: var(--border-hover);
   box-shadow: 0 0 28px var(--glow-cyan), var(--shadow-card-hover);
 }
 
-.github-stat-img {
-  width: 100%;
-  height: auto;
-  border-radius: 12px;
+.activity-card__header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--border);
+}
+
+.activity-card__icon {
+  width: 52px;
+  height: 52px;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  font-size: 1.55rem;
+}
+
+.activity-card__icon--github {
+  color: var(--text-primary);
+  background: var(--surface-hover);
+}
+
+.activity-card__icon--leetcode {
+  color: #ffa116;
+  background: rgba(255, 161, 22, 0.12);
+}
+
+.activity-card__platform {
   display: block;
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.activity-card__header h3 {
+  margin-top: 2px;
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+}
+
+.activity-card__live {
+  margin-left: auto;
+  padding: 5px 10px;
+  border: 1px solid rgba(52, 211, 153, 0.35);
+  border-radius: 999px;
+  color: #34d399;
+  background: rgba(52, 211, 153, 0.08);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.activity-card__live::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin-right: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 9px currentColor;
+}
+
+.activity-metrics,
+.streak-metrics {
+  display: grid;
+  margin-top: 26px;
+}
+
+.activity-metrics {
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.activity-metric,
+.streak-metric {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.activity-metric > svg {
+  margin-bottom: 7px;
+  color: var(--accent-cyan);
+  font-size: 0.95rem;
+}
+
+.activity-metric strong,
+.streak-metric strong {
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  line-height: 1.2;
+}
+
+.activity-metric span,
+.streak-metric span:last-child {
+  margin-top: 5px;
+  color: var(--text-secondary);
+  font-size: 0.76rem;
+}
+
+.streak-metrics {
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+}
+
+.streak-flame {
+  margin-bottom: 4px;
+  font-size: 1.6rem;
+  filter: drop-shadow(0 0 12px rgba(255, 161, 22, 0.55));
+}
+
+.streak-flame--best {
+  filter: drop-shadow(0 0 12px var(--glow-violet));
+}
+
+.streak-divider {
+  width: 1px;
+  height: 62px;
+  background: var(--border);
+}
+
+.activity-status {
+  display: grid;
+  min-height: 112px;
+  place-items: center;
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
 }
 
 /* Responsive */
@@ -57,7 +176,15 @@
     padding: 80px 5%;
   }
 
-  .github-card {
+  .activity-card {
     padding: 14px;
+  }
+
+  .activity-card__header {
+    align-items: flex-start;
+  }
+
+  .activity-card__live {
+    display: none;
   }
 }

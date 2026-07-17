@@ -33,8 +33,8 @@ function Contact() {
 
         <div className="contact-info">
           <FaEnvelope className="contact-icon" />
-          <a href="mailto:a0423355@gmail.com" className="contact-link">
-            a0423355@gmail.com
+          <a href="mailto:bhandariamit108@gmail.com" className="contact-link">
+            bhandariamit108@gmail.com
           </a>
         </div>
 
