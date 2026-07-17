@@ -1,5 +1,5 @@
 /* ========================================
-   Scroll To Top Button
+   Scroll To Top — Rocket Launch Edition
    ======================================== */
 
 .scroll-to-top {
@@ -22,6 +22,7 @@
   pointer-events: none;
   transition: opacity 0.35s ease, transform 0.35s ease, box-shadow 0.35s ease;
   animation: gradientShift 6s ease infinite;
+  overflow: visible;
 }
 
 .scroll-to-top.show {
@@ -34,6 +35,238 @@
   transform: translateY(-4px) scale(1.05);
   box-shadow: 0 12px 34px var(--glow-cyan);
 }
+
+/* ---------- Rocket icon ---------- */
+
+.rocket {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+}
+
+/* FaRocket points 45° up-right by default — straighten it */
+.launching .rocket svg {
+  transform: rotate(-45deg);
+}
+
+/* Flame under the rocket while launching */
+.launching .rocket::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: 10px;
+  height: 26px;
+  transform: translateX(-50%);
+  border-radius: 45% 45% 50% 50% / 20% 20% 80% 80%;
+  background: linear-gradient(180deg, #ffffff 0%, #fbbf24 30%, #f97316 65%, transparent 100%);
+  filter: blur(1px);
+  animation: flameFlicker 0.1s ease-in-out infinite alternate;
+}
+
+@keyframes flameFlicker {
+  from {
+    height: 20px;
+    opacity: 0.85;
+  }
+  to {
+    height: 30px;
+    opacity: 1;
+  }
+}
+
+/* Ignition rumble, then liftoff out of the viewport */
+.launching .rocket {
+  animation: rocketLiftoff 1.5s cubic-bezier(0.6, -0.1, 0.9, 0.4) forwards;
+}
+
+@keyframes rocketLiftoff {
+  0% {
+    transform: translate(0, 0);
+  }
+  6% {
+    transform: translate(-1.5px, 1px);
+  }
+  12% {
+    transform: translate(1.5px, 2px);
+  }
+  18% {
+    transform: translate(-1.5px, 1px);
+  }
+  24% {
+    transform: translate(1.5px, 2px);
+  }
+  30% {
+    transform: translate(0, 0) scale(1.15);
+  }
+  45% {
+    transform: translateY(-30px) scale(1.15);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-96vh) scale(0.55);
+    opacity: 0;
+  }
+}
+
+/* Button shell dims while the rocket is away */
+.scroll-to-top.launching {
+  pointer-events: none;
+  box-shadow: 0 0 44px var(--glow-cyan), 0 8px 26px var(--glow-violet);
+}
+
+/* ---------- Terminal pop-up ---------- */
+
+.launch-label {
+  position: absolute;
+  bottom: calc(100% + 12px);
+  right: 0;
+  padding: 6px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface-solid);
+  color: var(--accent-cyan);
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 600;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(6px) scale(0.9);
+  pointer-events: none;
+}
+
+.launching .launch-label {
+  animation: labelPop 1.2s ease forwards;
+}
+
+@keyframes labelPop {
+  0% {
+    opacity: 0;
+    transform: translateY(6px) scale(0.9);
+  }
+  15%,
+  70% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.95);
+  }
+}
+
+/* ---------- Smoke puffs at the pad ---------- */
+
+.smoke {
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  pointer-events: none;
+}
+
+.smoke i {
+  position: absolute;
+  bottom: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--text-secondary) 45%, transparent);
+  filter: blur(2px);
+  opacity: 0;
+}
+
+.launching .smoke i:nth-child(1) {
+  animation: smokePuff 0.9s ease-out 0.35s forwards;
+  --drift: -18px;
+}
+
+.launching .smoke i:nth-child(2) {
+  animation: smokePuff 1s ease-out 0.45s forwards;
+  --drift: 14px;
+}
+
+.launching .smoke i:nth-child(3) {
+  animation: smokePuff 1.1s ease-out 0.55s forwards;
+  --drift: -6px;
+}
+
+@keyframes smokePuff {
+  0% {
+    opacity: 0.9;
+    transform: translate(-50%, 0) scale(0.5);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(calc(-50% + var(--drift)), -14px) scale(2.4);
+  }
+}
+
+/* ---------- Speed lines ---------- */
+
+.speed-lines {
+  position: absolute;
+  inset: -70px -6px auto;
+  height: 120px;
+  pointer-events: none;
+}
+
+.speed-lines i {
+  position: absolute;
+  top: 0;
+  width: 2px;
+  height: 26px;
+  border-radius: 2px;
+  background: linear-gradient(180deg, transparent, var(--accent-cyan));
+  opacity: 0;
+}
+
+.speed-lines i:nth-child(1) {
+  left: 12%;
+}
+.speed-lines i:nth-child(2) {
+  left: 38%;
+  height: 34px;
+}
+.speed-lines i:nth-child(3) {
+  left: 64%;
+  height: 20px;
+}
+.speed-lines i:nth-child(4) {
+  left: 88%;
+  height: 30px;
+}
+
+.launching .speed-lines i {
+  animation: speedStreak 0.45s linear infinite;
+}
+
+.launching .speed-lines i:nth-child(2) {
+  animation-delay: 0.12s;
+}
+.launching .speed-lines i:nth-child(3) {
+  animation-delay: 0.22s;
+}
+.launching .speed-lines i:nth-child(4) {
+  animation-delay: 0.32s;
+}
+
+@keyframes speedStreak {
+  0% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  25% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(110px);
+  }
+}
+
+/* ---------- Mobile ---------- */
 
 @media (max-width: 600px) {
   .scroll-to-top {
