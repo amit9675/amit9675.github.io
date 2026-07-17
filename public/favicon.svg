@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="64" y2="64">
+      <stop offset="0" stop-color="#22d3ee"/>
+      <stop offset="0.55" stop-color="#8b5cf6"/>
+      <stop offset="1" stop-color="#f472b6"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Dark rounded tile matching the site background -->
+  <rect width="64" height="64" rx="14" fill="#05070d"/>
+  <rect x="1.5" y="1.5" width="61" height="61" rx="12.5" fill="none" stroke="url(#g)" stroke-width="2.5" opacity="0.9"/>
+
+  <!-- AB monogram -->
+  <text
+    x="32" y="34"
+    text-anchor="middle"
+    dominant-baseline="central"
+    font-family="'Space Grotesk','Segoe UI',Arial,sans-serif"
+    font-size="30"
+    font-weight="800"
+    letter-spacing="-1.5"
+    fill="url(#g)"
+  >AB</text>
+
+  <!-- Accent underline -->
+  <rect x="20" y="49" width="24" height="3.5" rx="1.75" fill="url(#g)"/>
+</svg>

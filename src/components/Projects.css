@@ -1,0 +1,205 @@
+/* ========================================
+   Projects Section
+   ======================================== */
+
+.projects-section {
+  padding: 110px 8%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 28px;
+}
+
+/* ---------- Card ---------- */
+
+.project-card {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--border-hover);
+  box-shadow: 0 20px 56px var(--glow-cyan), var(--shadow-card-hover);
+}
+
+/* ---------- Image ---------- */
+
+.project-image-container {
+  position: relative;
+  height: 210px;
+  overflow: hidden;
+}
+
+.project-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), filter 0.5s ease;
+}
+
+.project-card:hover .project-image {
+  transform: scale(1.07);
+}
+
+.project-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 55%, var(--surface-solid) 100%);
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+/* ---------- Text ---------- */
+
+.project-title {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  font-weight: 600;
+  padding: 18px 24px 6px;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+
+.project-description {
+  padding: 0 24px;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.65;
+  flex-grow: 1;
+}
+
+.project-details {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  padding: 8px 24px 0;
+  color: var(--text-tertiary);
+}
+
+/* ---------- Tech tags ---------- */
+
+.project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 14px 24px;
+}
+
+.tech-tag {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--accent-cyan);
+  padding: 4px 13px;
+  border-radius: var(--radius-xl);
+  font-size: 0.73rem;
+  font-family: var(--font-mono);
+  transition: all 0.25s ease;
+}
+
+.project-card:hover .tech-tag {
+  border-color: color-mix(in srgb, var(--accent-cyan) 35%, transparent);
+}
+
+/* ---------- Buttons ---------- */
+
+.project-buttons {
+  display: flex;
+  gap: 12px;
+  padding: 8px 24px 24px;
+}
+
+.btn-code,
+.btn-live {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 11px;
+  border-radius: var(--radius-xl);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-code {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+}
+
+.btn-code:hover {
+  border-color: var(--border-hover);
+  color: var(--accent-cyan);
+  box-shadow: 0 0 18px var(--glow-cyan);
+}
+
+.btn-live {
+  background: var(--gradient-primary);
+  background-size: 200% auto;
+  color: #ffffff;
+  border: none;
+  animation: gradientShift 6s ease infinite;
+}
+
+.btn-live:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 26px var(--glow-violet);
+}
+
+/* ---------- Explore more ---------- */
+
+.explore-more-wrapper {
+  text-align: center;
+  margin-top: 54px;
+}
+
+.explore-more-btn {
+  display: inline-block;
+  background: var(--gradient-primary);
+  background-size: 200% auto;
+  padding: 15px 44px;
+  border-radius: var(--radius-xl);
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 1rem;
+  animation: gradientShift 6s ease infinite;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.explore-more-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 36px var(--glow-cyan);
+}
+
+/* ========================================
+   Responsive
+   ======================================== */
+
+@media (max-width: 768px) {
+  .projects-section {
+    padding: 90px 5%;
+  }
+
+  .projects-grid {
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 20px;
+  }
+}
+
+@media (max-width: 400px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-buttons {
+    flex-direction: column;
+  }
+}

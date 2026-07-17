@@ -1,0 +1,85 @@
+.aurora-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: var(--aurora-opacity, 1);
+  transition: opacity 0.4s ease;
+}
+
+.aurora-blob {
+  position: absolute;
+  width: 55vmax;
+  height: 55vmax;
+  border-radius: 50%;
+  filter: blur(90px);
+  will-change: transform;
+}
+
+.aurora-blob--cyan {
+  top: -20%;
+  left: -12%;
+  background: radial-gradient(circle, var(--glow-cyan) 0%, transparent 65%);
+  animation: auroraDrift1 26s ease-in-out infinite alternate;
+}
+
+.aurora-blob--violet {
+  top: 25%;
+  right: -18%;
+  background: radial-gradient(circle, var(--glow-violet) 0%, transparent 65%);
+  animation: auroraDrift2 32s ease-in-out infinite alternate;
+}
+
+.aurora-blob--pink {
+  bottom: -25%;
+  left: 20%;
+  background: radial-gradient(circle, var(--glow-pink) 0%, transparent 65%);
+  animation: auroraDrift3 38s ease-in-out infinite alternate;
+}
+
+@keyframes auroraDrift1 {
+  from {
+    transform: translate(0, 0) scale(1);
+  }
+  to {
+    transform: translate(12vw, 10vh) scale(1.15);
+  }
+}
+
+@keyframes auroraDrift2 {
+  from {
+    transform: translate(0, 0) scale(1.1);
+  }
+  to {
+    transform: translate(-10vw, -8vh) scale(0.95);
+  }
+}
+
+@keyframes auroraDrift3 {
+  from {
+    transform: translate(0, 0) scale(0.95);
+  }
+  to {
+    transform: translate(8vw, -12vh) scale(1.1);
+  }
+}
+
+/* Faint engineering-grid overlay */
+.aurora-grid {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 90% 70% at 50% 30%, black 30%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 90% 70% at 50% 30%, black 30%, transparent 100%);
+}
+
+/* Subtle film grain to avoid banding on the blobs */
+.aurora-noise {
+  position: absolute;
+  inset: 0;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}

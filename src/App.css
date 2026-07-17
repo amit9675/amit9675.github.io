@@ -1,0 +1,388 @@
+/* ======================================
+   GLOBAL STYLES & DESIGN TOKENS
+   Portfolio — Amit Bhandari
+   Theme: "Aurora Grid" (2026)
+   ====================================== */
+
+@import 'tailwindcss';
+
+/* Tailwind v4 theme mapping — enables utilities like
+   font-heading, font-mono-code, text-accent-cyan, etc. */
+@theme {
+  --font-heading: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-code: 'JetBrains Mono', monospace;
+
+  --color-accent-cyan: #22d3ee;
+  --color-accent-violet: #8b5cf6;
+  --color-accent-pink: #f472b6;
+}
+
+:root {
+  --font-heading: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Accent palette */
+  --accent-cyan: #22d3ee;
+  --accent-violet: #8b5cf6;
+  --accent-pink: #f472b6;
+  --accent-purple: #8b5cf6; /* legacy alias */
+
+  --gradient-primary: linear-gradient(135deg, #22d3ee 0%, #8b5cf6 55%, #f472b6 100%);
+  --gradient-reverse: linear-gradient(135deg, #f472b6 0%, #8b5cf6 45%, #22d3ee 100%);
+  --gradient-conic: conic-gradient(from var(--border-angle, 0deg), #22d3ee, #8b5cf6, #f472b6, #22d3ee);
+
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 999px;
+
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+
+  --nav-height: 72px;
+}
+
+/* Animatable angle for conic gradient borders */
+@property --border-angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
+/* ---- Dark Theme (Default) ---- */
+[data-theme='dark'] {
+  color-scheme: dark;
+  --bg-primary: #05070d;
+  --bg-secondary: #090d17;
+  --surface: rgba(148, 163, 184, 0.05);
+  --surface-solid: #0c111d;
+  --surface-hover: rgba(148, 163, 184, 0.1);
+  --glass: rgba(9, 13, 23, 0.65);
+  --text-primary: #eef2f8;
+  --text-secondary: #97a3b8;
+  --text-tertiary: #5d6b82;
+  --border: rgba(148, 163, 184, 0.14);
+  --border-hover: rgba(34, 211, 238, 0.55);
+  --glow-cyan: rgba(34, 211, 238, 0.25);
+  --glow-violet: rgba(139, 92, 246, 0.22);
+  --glow-pink: rgba(244, 114, 182, 0.18);
+  --glow-purple: rgba(139, 92, 246, 0.22); /* legacy alias */
+  --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.45);
+  --shadow-card-hover: 0 24px 64px rgba(0, 0, 0, 0.55);
+  --scrollbar-track: #090d17;
+  --scrollbar-thumb: #1e293b;
+  --scrollbar-thumb-hover: #334155;
+  --aurora-opacity: 1;
+  --grid-line: rgba(148, 163, 184, 0.045);
+}
+
+/* ---- Light Theme ---- */
+[data-theme='light'] {
+  color-scheme: light;
+  --bg-primary: #f5f7fc;
+  --bg-secondary: #edf1f9;
+  --surface: rgba(255, 255, 255, 0.75);
+  --surface-solid: #ffffff;
+  --surface-hover: rgba(255, 255, 255, 0.95);
+  --glass: rgba(255, 255, 255, 0.7);
+  --text-primary: #0f172a;
+  --text-secondary: #47556b;
+  --text-tertiary: #8a97ac;
+  --border: rgba(15, 23, 42, 0.1);
+  --border-hover: rgba(8, 145, 178, 0.5);
+  --glow-cyan: rgba(6, 182, 212, 0.16);
+  --glow-violet: rgba(139, 92, 246, 0.14);
+  --glow-pink: rgba(236, 72, 153, 0.1);
+  --glow-purple: rgba(139, 92, 246, 0.14); /* legacy alias */
+  --shadow-card: 0 6px 24px rgba(15, 23, 42, 0.07);
+  --shadow-card-hover: 0 18px 48px rgba(15, 23, 42, 0.13);
+  --scrollbar-track: #eef2f9;
+  --scrollbar-thumb: #cbd5e1;
+  --scrollbar-thumb-hover: #94a3b8;
+  --aurora-opacity: 0.5;
+  --grid-line: rgba(15, 23, 42, 0.04);
+}
+
+/* ---- Base ----
+   NOTE: no universal margin/padding reset here — Tailwind's
+   preflight already handles it. An unlayered `*` reset would
+   override Tailwind utility classes and break layouts. */
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 96px;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+    transition: background-color 0.4s ease, color 0.4s ease;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* ---- Scrollbar ---- */
+::-webkit-scrollbar {
+  width: 9px;
+}
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
+
+/* ---- Selection ---- */
+::selection {
+  background: rgba(139, 92, 246, 0.4);
+  color: #fff;
+}
+[data-theme='light'] ::selection {
+  background: rgba(139, 92, 246, 0.25);
+  color: var(--text-primary);
+}
+
+@layer base {
+  a {
+    text-decoration: none;
+    color: inherit;
+    transition: color var(--transition-normal);
+  }
+
+  img {
+    max-width: 100%;
+    display: block;
+  }
+
+  ul,
+  ol {
+    list-style: none;
+  }
+
+  button {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-family: var(--font-body);
+    font-size: inherit;
+    background: none;
+  }
+}
+
+/* ======================================
+   SHARED SECTION PATTERNS
+   ====================================== */
+
+section {
+  position: relative;
+  z-index: 1;
+}
+
+/* Eyebrow label above section titles */
+.section-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent-cyan);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 6px 16px;
+  border-radius: var(--radius-xl);
+  margin-bottom: 18px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.section-eyebrow::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gradient-primary);
+  box-shadow: 0 0 10px var(--glow-cyan);
+}
+
+.section-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 4.5vw, 2.9rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  color: var(--text-primary);
+}
+
+.section-title .grad {
+  background: var(--gradient-primary);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientShift 6s ease infinite;
+}
+
+.section-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.section-sub {
+  margin-top: 14px;
+  max-width: 560px;
+  color: var(--text-secondary);
+  font-size: 1.02rem;
+}
+
+/* ---- Gradient Text Utility ---- */
+.gradient-text {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ---- Glass Card Utility ---- */
+.glass-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: var(--shadow-card);
+  transition: transform var(--transition-normal), border-color var(--transition-normal),
+    box-shadow var(--transition-normal);
+}
+
+/* ---- Animated conic-border card ---- */
+.border-glow {
+  position: relative;
+}
+
+.border-glow::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: var(--gradient-conic);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  animation: borderRotate 5s linear infinite;
+  pointer-events: none;
+}
+
+.border-glow:hover::before {
+  opacity: 1;
+}
+
+@keyframes borderRotate {
+  to {
+    --border-angle: 360deg;
+  }
+}
+
+/* ---- Container ---- */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ---- Keyframes ---- */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes pulseGlow {
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* ---- Reduced motion ---- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* ---- Mobile ---- */
+@media (max-width: 768px) {
+  .section-head {
+    margin-bottom: 44px;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-section,
+  .techstack-section,
+  .skills-section,
+  .experience-section,
+  .github-section,
+  .projects-section,
+  .contact-section {
+    padding: 72px 5%;
+  }
+
+  .section-eyebrow {
+    font-size: 0.72rem;
+    padding: 5px 13px;
+  }
+
+  .section-sub {
+    font-size: 0.94rem;
+  }
+}

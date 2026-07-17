@@ -1,0 +1,135 @@
+/* ========================================
+   Tech Stack Section
+   ======================================== */
+
+.techstack-section {
+  padding: 110px 8%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ---------- Category label ---------- */
+
+.tech-category {
+  margin-bottom: 44px;
+}
+
+.category-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 22px;
+}
+
+.category-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.data-dot {
+  background: var(--accent-cyan);
+  box-shadow: 0 0 12px var(--glow-cyan);
+}
+
+.dev-dot {
+  background: var(--accent-violet);
+  box-shadow: 0 0 12px var(--glow-violet);
+}
+
+/* ---------- Grid & cards ---------- */
+
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(126px, 1fr));
+  gap: 16px;
+}
+
+.tech-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 24px 12px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  cursor: default;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tech-card:hover {
+  border-color: color-mix(in srgb, var(--tech-color, var(--accent-cyan)) 60%, transparent);
+  box-shadow: 0 12px 32px color-mix(in srgb, var(--tech-color, var(--accent-cyan)) 18%, transparent);
+}
+
+.tech-icon {
+  font-size: 2.2rem;
+  filter: drop-shadow(0 0 10px color-mix(in srgb, var(--tech-color, transparent) 35%, transparent));
+}
+
+.tech-name {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+.tech-card:hover .tech-name {
+  color: var(--text-primary);
+}
+
+/* ---------- Concept pills ---------- */
+
+.concept-strip {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.concept-pill {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: 8px 18px;
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.concept-pill:hover {
+  color: var(--accent-cyan);
+  border-color: var(--border-hover);
+  box-shadow: 0 0 16px var(--glow-cyan);
+  transform: translateY(-2px);
+}
+
+/* ========================================
+   Responsive
+   ======================================== */
+
+@media (max-width: 768px) {
+  .techstack-section {
+    padding: 90px 6%;
+  }
+
+  .tech-grid {
+    grid-template-columns: repeat(auto-fill, minmax(102px, 1fr));
+    gap: 12px;
+  }
+
+  .tech-icon {
+    font-size: 1.9rem;
+  }
+}

@@ -1,0 +1,103 @@
+/* ========================================
+   Skills / Core Competencies
+   ======================================== */
+
+.skills-section {
+  padding: 110px 8%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 26px;
+}
+
+/* ---------- Card ---------- */
+
+.skill-card {
+  position: relative;
+  padding: 34px 28px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.skill-card:hover {
+  box-shadow: 0 18px 48px color-mix(in srgb, var(--skill-color, var(--accent-cyan)) 14%, transparent),
+    var(--shadow-card);
+}
+
+/* Soft color wash on hover */
+.skill-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 20% 0%,
+    color-mix(in srgb, var(--skill-color, var(--accent-cyan)) 10%, transparent),
+    transparent 55%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.skill-card:hover::after {
+  opacity: 1;
+}
+
+/* ---------- Icon ---------- */
+
+.skill-icon-wrapper {
+  width: 62px;
+  height: 62px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--skill-color, var(--accent-cyan)) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--skill-color, var(--accent-cyan)) 25%, transparent);
+  margin-bottom: 22px;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.skill-card:hover .skill-icon-wrapper {
+  transform: scale(1.08) rotate(-4deg);
+  box-shadow: 0 0 24px color-mix(in srgb, var(--skill-color, var(--accent-cyan)) 30%, transparent);
+}
+
+.skill-icon {
+  font-size: 1.9rem;
+}
+
+/* ---------- Text ---------- */
+
+.skill-title {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+
+.skill-description {
+  font-size: 0.92rem;
+  line-height: 1.75;
+  color: var(--text-secondary);
+}
+
+/* ========================================
+   Responsive
+   ======================================== */
+
+@media (max-width: 768px) {
+  .skills-section {
+    padding: 90px 6%;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
