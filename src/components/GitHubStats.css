@@ -1,0 +1,63 @@
+/* ===== Coding Activity (GitHub + LeetCode) ===== */
+.github-section {
+  padding: 110px 8%;
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Stats Grid */
+.github-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 26px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* LeetCode card spans full width on its own row */
+.github-stats-grid > :nth-child(3) {
+  grid-column: 1 / -1;
+  max-width: 640px;
+  justify-self: center;
+  width: 100%;
+}
+
+.github-card {
+  border-radius: var(--radius-md);
+  padding: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.github-card:hover {
+  border-color: var(--border-hover);
+  box-shadow: 0 0 28px var(--glow-cyan), var(--shadow-card-hover);
+}
+
+.github-stat-img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  display: block;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .github-stats-grid {
+    grid-template-columns: 1fr;
+    max-width: 540px;
+  }
+}
+
+@media (max-width: 600px) {
+  .github-section {
+    padding: 80px 5%;
+  }
+
+  .github-card {
+    padding: 14px;
+  }
+}

@@ -1,0 +1,271 @@
+/* ========================================
+   Hero — custom animations & effects only
+   (layout handled by Tailwind in Hero.jsx)
+   ======================================== */
+
+/* ---------- Highlighted availability badge ---------- */
+
+.hero-badge {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 0.84rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  padding: 10px 22px;
+  border-radius: 999px;
+  border: 1.5px solid transparent;
+  background:
+    linear-gradient(var(--surface-solid), var(--surface-solid)) padding-box,
+    var(--gradient-conic) border-box;
+  animation: borderRotate 4s linear infinite;
+  box-shadow: 0 0 24px var(--glow-cyan), 0 0 48px var(--glow-violet);
+  overflow: hidden;
+}
+
+/* Shine sweep across the badge */
+.hero-badge::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    110deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.22) 50%,
+    transparent 70%
+  );
+  transform: translateX(-100%);
+  animation: badgeShine 3.2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes badgeShine {
+  0%,
+  55% {
+    transform: translateX(-100%);
+  }
+  85%,
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.hero-badge__text {
+  background: var(--gradient-primary);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientShift 5s ease infinite;
+}
+
+.hero-badge__dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #34d399;
+  flex-shrink: 0;
+  animation: badgePulse 2s ease-out infinite;
+}
+
+@keyframes badgePulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.6);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(52, 211, 153, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(52, 211, 153, 0);
+  }
+}
+
+/* ---------- Gradient name ---------- */
+
+.hero-name {
+  font-family: var(--font-heading);
+  font-size: clamp(2.6rem, 7vw, 4.6rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  background: var(--gradient-primary);
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientShift 7s ease infinite;
+}
+
+/* ---------- CTA buttons ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border-radius: 999px;
+  padding: 14px 34px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 0.2px;
+}
+
+.btn-primary {
+  background: var(--gradient-primary);
+  background-size: 200% auto;
+  color: #ffffff;
+  border: none;
+  box-shadow: 0 6px 24px var(--glow-violet);
+  animation: gradientShift 6s ease infinite;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 36px var(--glow-cyan), 0 6px 24px var(--glow-violet);
+}
+
+.btn-secondary {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.btn-secondary:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 24px var(--glow-cyan);
+}
+
+@media (max-width: 480px) {
+  .btn {
+    padding: 12px 24px;
+    font-size: 0.92rem;
+  }
+}
+
+/* ---------- Photo ring, glow & float ---------- */
+
+.hero-photo-ring {
+  position: absolute;
+  inset: -14px;
+  border-radius: 50%;
+  background: var(--gradient-conic);
+  animation: ringSpin 9s linear infinite;
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #fff calc(100% - 2px));
+  mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #fff calc(100% - 2px));
+  opacity: 0.9;
+}
+
+@keyframes ringSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.hero-photo-glow {
+  position: absolute;
+  inset: -30px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--glow-violet) 0%, var(--glow-cyan) 40%, transparent 70%);
+  filter: blur(36px);
+  z-index: 0;
+  animation: pulseGlow 5s ease-in-out infinite;
+}
+
+/* Whole composition (ring + photo + chips) floats gently */
+.hero-photo-float {
+  animation: photoFloat 6s ease-in-out infinite;
+}
+
+.hero-photo {
+  border: 4px solid var(--surface-solid);
+  box-shadow: 0 0 40px var(--glow-cyan);
+  cursor: pointer;
+  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.45s ease,
+    border-color 0.45s ease;
+}
+
+/* Hover highlight — zoom like the tech-stack cards */
+.hero-photo:hover {
+  transform: scale(1.07);
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 55px var(--glow-cyan), 0 0 90px var(--glow-violet);
+}
+
+/* Ring glows brighter while photo is hovered */
+.hero-photo-float:has(.hero-photo:hover) .hero-photo-ring {
+  opacity: 1;
+  animation-duration: 4s;
+}
+
+@keyframes photoFloat {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+/* ---------- Orbiting tech chips ---------- */
+
+.chip-react {
+  top: 2%;
+  right: 4%;
+  animation: chipFloat 5s ease-in-out infinite;
+}
+
+.chip-mongo {
+  bottom: 6%;
+  right: -4%;
+  animation: chipFloat 6s ease-in-out infinite 0.8s;
+}
+
+.chip-python {
+  top: 18%;
+  left: -7%;
+  animation: chipFloat 5.5s ease-in-out infinite 0.4s;
+}
+
+.chip-spark {
+  bottom: -2%;
+  left: 12%;
+  animation: chipFloat 6.5s ease-in-out infinite 1.2s;
+}
+
+@keyframes chipFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+/* ---------- Scroll hint bob ---------- */
+
+.hero-scroll-hint {
+  transform: translateX(-50%);
+  animation: hintBob 2.2s ease-in-out infinite;
+}
+
+@keyframes hintBob {
+  0%,
+  100% {
+    transform: translate(-50%, 0);
+  }
+  50% {
+    transform: translate(-50%, 8px);
+  }
+}
