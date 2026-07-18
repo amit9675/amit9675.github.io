@@ -123,7 +123,11 @@ const Hero = () => {
             className="mb-9 flex flex-wrap gap-4 max-md:justify-center"
             variants={itemVariants}
           >
-            <a href="/Amit_Bhandari_Resume.pdf" download className="btn btn-primary">
+            <a
+              href="/Amit_Bhandari_Resume.pdf?v=fullstack-v3"
+              download="Amit_Bhandari_Resume.pdf"
+              className="btn btn-primary"
+            >
               <FiDownload />
               Download Resume
             </a>

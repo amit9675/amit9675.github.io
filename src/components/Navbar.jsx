@@ -12,8 +12,8 @@ const NAV_LINKS = [
   { label: 'Projects', href: '#projects' },
   {
     label: 'Resume',
-    href: '/Amit_Bhandari_Resume.pdf',
-    download: true,
+    href: '/Amit_Bhandari_Resume.pdf?v=fullstack-v3',
+    download: 'Amit_Bhandari_Resume.pdf',
   },
   { label: 'Contact', href: '#contact' },
 ];
@@ -137,7 +137,7 @@ const Navbar = () => {
               }`}
               href={href}
               {...(download
-                ? { download: true, target: '_blank', rel: 'noopener noreferrer' }
+                ? { download, target: '_blank', rel: 'noopener noreferrer' }
                 : {})}
               onClick={(e) => handleNavClick(e, href, download)}
             >

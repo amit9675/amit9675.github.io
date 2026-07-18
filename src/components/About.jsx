@@ -117,8 +117,8 @@ const About = () => {
           </div>
 
           <motion.a
-            href="/Amit_Bhandari_Resume.pdf"
-            download
+            href="/Amit_Bhandari_Resume.pdf?v=fullstack-v3"
+            download="Amit_Bhandari_Resume.pdf"
             className="resume-btn"
             whileHover={{ scale: 1.04 }}
             whileTap={{ scale: 0.96 }}
